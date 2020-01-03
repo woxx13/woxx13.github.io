@@ -1,0 +1,148 @@
+﻿<!doctype html>
+<html>
+ <head>
+  <meta charset='utf-8'>
+  <title>Простой калькулятор</title>
+  <style>
+		body
+		{
+			background-color: 		#f3f3f3;
+		}
+		section
+		{
+			position:				absolute;
+			left:					50%;
+			top:					50%;
+			transform:				translate(-50%, -50%);
+			width: 					50%;
+			height: 				320px;
+			background:		 		url(res/girl.png) no-repeat top 10px center #ccc;
+			background-size:		80%;
+			padding:				20px;
+			border-radius:			10px;
+		}
+		input[type='text']
+		{
+			position:				relative;
+			top: 					50%;
+			left: 					50%;
+			transform:				translate(-50%);
+			display:				block;
+			margin:					0 0 5px 0;
+			text-align:				center;
+		}
+		nav
+		{
+			position:				relative;
+			left: 					50%;
+			bottom:					-65%;
+			transform:				translate(-50%);
+			width:					100%;
+			text-align:				center;
+		}
+		input[type='button']
+		{
+			width: 					22%;
+			height:					40px;
+			text-align:				center;
+			border-radius:			10px;
+			background:				#f00;
+			outline:				none;
+			font-size:				.6em;
+			font-weight:			900;
+		}
+		input:active
+		{
+			background:				#0f0;
+		}
+  </style>
+ </head>
+ <body>
+	<section title='*************************
+	
+ Вставьте два числа в
+ соответствующие ячейки и
+ нажмите кнопку желаемого
+ математического действия
+ 
+ ************************'>
+			<!--<legend style='margin-top: 5px; font-size: .6em; width: 120px; text-align: justify;'>Вставьте два числа в соответствующие ячейки и нажмите кнопку желаемого математического действия.</legend>-->
+			<input id='operand_1' 	type='text' placeholder=' Введите Х' size='8'>
+			<input id='operand_2' 	type='text' placeholder=' Введите Y' size='8'>
+			<input id='result' 		type='text' placeholder=' Результат' readonly>
+			<nav>
+				<input type='button' value='X + Y' onmouseup='add()'>
+				<input type='button' value='X - Y' onmouseup='sub()'>
+				<input type='button' value='X x Y' onmouseup='mult()'>
+				<input type='button' value='X : Y' onmouseup='div()'>
+			</nav>
+	</section>
+ </body>
+ <script>
+//Проверка ввода
+	function check()
+	{
+		var regexp = /\-?\d+(\.\d{0,})?/;
+		if(regexp.test(operand_1.value) && regexp.test(operand_1.value))
+			return true;
+		else
+			return false;
+	}
+//Вычисление суммы	
+	function add()
+	{
+		if (check())
+		{
+			result.value = (+operand_1.value) + (+operand_2.value);
+			return true;
+		}
+		else
+		{
+			alert("Проверьте правильность ввода чисел!")
+			return false;
+		}	
+	}
+//Вычисление разности
+	function sub()
+	{
+		if (check())
+		{
+			result.value = (+operand_1.value) - (+operand_2.value);
+			return true;
+		}
+		else
+		{
+			alert("Проверьте правильность ввода чисел!")
+			return false;
+		}
+	}
+//Вычисление произведения	
+	function mult()
+	{
+		if (check())
+		{
+			result.value = (+operand_1.value) * (+operand_2.value);
+			return true;
+		}
+		else
+		{
+			alert("Проверьте правильность ввода чисел!")
+			return false;
+		}
+	}
+//Вычисление частного	
+	function div()
+	{
+		if (check())
+		{
+			result.value = (+operand_1.value) / (+operand_2.value);
+			return true;
+		}
+		else
+		{
+			alert("Проверьте правильность ввода чисел!")
+			return false;
+		}
+	}
+ </script>
+</html>
