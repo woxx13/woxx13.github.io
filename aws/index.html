@@ -1,0 +1,71 @@
+<!doctype html>
+<html  id='begin'>
+	<head>
+		<meta charset='utf-8'>
+		<title>aws</title>
+		<meta name='viewport' 				content='width=device-width, initial-scale=1'>
+		<meta http-equiv='x-ua-compatible' 	content='ie=edge'>
+		<meta name='author' 				content='Kuzmenko Vadim aka woxx'>
+		<meta name='description' 			content=''>
+		<meta name='keywords' 				content=''>
+		<link rel='stylesheet' 				href='css/reset.css'>
+		<link rel='stylesheet' 				href='css/style.css'>
+		<link rel='shortcut icon' 			href='favicon.ico'>
+		<!--[if lt ie 9]>
+		<script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+		<![endif]-->
+		<script src='js/init.js'></script>
+	</head>
+	<body>
+<!--Многоуровневое, выдвигающееся из-за края экрана при нажатии на логотип, меню. Начало-->
+		<nav>
+			<input type="checkbox" id="showmenu"/>
+			<label for="showmenu" class="showmenu"><img src='res/logo.png' title='меню' alt=''></label>
+			<!-- <label for="showmenu" class="back"></label> -->
+			<ul>
+				<li><a href="#begin">Визуализация</a></li>
+				<li>
+					<a href="index.html">Рецепты</a>
+					<input type="checkbox" id="menu2">
+					<label for="menu2">&#9660;</label>
+					<ul>
+						<li><a href="#block_2_1">Блины</a></li>
+						<li><a href="#block_2_2">Лаваш</a></li>
+						<li><a href="#block_2_1">Вареники</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+<!--Многоуровневое, выдвигающееся из-за края экрана при нажатии на логотип, меню. Конец-->
+		<section class='block_0' id='block_1'>
+<!--Визуализация. Начало-->
+<!--Бак-->
+<img id='tank' class='tank' style='top:65px;left:190px;' src='res/mixer_1_10.gif' alt=''>
+<img id='tap_1' class='tap'  style='top:160px;left:135px;' src='res/tap_hor_close.gif' alt=''>
+<img id='tube_press_1' class='tube' style='top:160px;left:165px;' src='res/tube_1001.gif' alt=''>
+<img id='tube_press_2' class='tube' style='top:130px;left:165px;' src='res/tube_1010.gif' alt=''>
+<img id='tube_press_3' class='tube' style='top:100px;left:165px;' src='res/tube_1010.gif' alt=''>
+<img id='tube_press_4' class='tube' style='top:70px;left:165px;' 	src='res/tube_1010.gif' alt=''>
+<img id='tube_press_5' class='tube' style='top:40px;left:165px;' 	src='res/tube_0110.gif' alt=''>
+<img id='tube_press_6' class='tube' style='top:40px;left:195px;'  src='res/tube_0101.gif' alt=''>
+<img id='tube_press_7' class='tube' style='top:40px;left:225px;'  src='res/tube_0011.gif' alt=''>
+<img id='sensor_max' class='sensor' style='top:80px;left:202px;' src='res/sensor_green.gif' title='Датчик максимального уровня' alt=''>
+<img id='sensor_min' class='sensor' style='top:150px;left:202px;' src='res/sensor_green.gif' title='Датчик минимального уровня' alt=''>
+
+<img id='tube_flow_1' class='tube' style='top:165px;left:225px;' src='res/tube_1010.gif' alt=''>
+<img id='tube_flow_2' class='tube' style='top:195px;left:225px;' src='res/tube_1010.gif' alt=''>
+<img id='tube_flow_3' class='tube' style='top:225px;left:225px;' src='res/tube_1100.gif' alt=''>
+<img id='tap_2' class='tap'  style='top:225px;left:255px;' src='res/tap_hor_close.gif' alt='' onclick = 'run_tank_empting()' oncontextmenu = 'stop_tank_empting(); return false' ondblclick = 'stop_tank_empting()'>
+<!--Визуализация. Конец-->		
+		</section>
+		<section style='display: none;'>
+			<div style='text-align: center; margin-top: 20px; z-index: 1900;'>
+				<div  style='width: 30%; display: inline-block; vertical-align:top;'>
+					<img src='res/niotech.png' title='All rights reserved. &copy; 2020
+Write to me: woxx13@gmail.com' />
+				</div>
+			</div>
+		</section>
+	</body>
+	<script src='js/script.js'></script>
+</html>
