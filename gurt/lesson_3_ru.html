@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+<!--Кодировка странички-->	
+		<meta charset='utf-8' />
+<!--Наименование странички. Вы найдете этот текст на вкладке браузера, когда открыта эта страничка-->
+		<title>Как вставить картинку в интернет-страничку</title>
+<!--Иконка на вкладке браузера, в которой открыта эта страничка-->
+		<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+<!--Когда Вы найдете ссылку на свою страничку в поисковике, то значение атрибута 'content' следующего тега будет под ней. -->
+		<meta name='description' content='Как вставить картинку в интернет-страничку.' />
+<!--Если человек введет в поисковике какое-нибудь слово из значения атрибута 'content' следующего тега, то в списке найденных ссылок будет и Ваш сайт-->
+		<meta name='keywords' content='кружок,веб,разработка,поддубное,великая новоселка,донецкая,школа,донецк,html,css,картинка,изображение' />
+<!--Подключение стилей-->
+<!--Вначале, при помощи подключения файла reset.css, отключаем все настройки стилей по-умолчанию в Вашем браузере -->
+		<link rel='stylesheet' href='css/reset.css'>
+		<link rel='stylesheet' href='css/style.css'>
+<!--/Подключение стилей-->
+	</head>
+	<body>
+	<marquee class='block_1'>- - - info - - - К 150-летию Михаила Сергеевича Грушевского силами кружка был создан сайт <a href='http://grush.site88.net' target='_blank'>http://grush.site88.net</a>  - - - info - - - Кружок примет в дар или за символическую плату компьютерную технику любого поколения в любом состоянии - - - info - - - </marquee>
+	<a href='index_ru.html'><img src='res/logo.gif' class='block_logo' title='На главную страницу' alt='' /></a>
+		<div class='block_0'>
+			<h2 class='title_of_block'>Как вставить картинку в интернет-страничку</h2>
+			<p>Хронологически изображения в интернет-страничках появились сразу после текстового содержимого. Как же это сделать нам? <a href='lesson_1_ru.html' target='_blank'>Создайте простейшую интернет-страничку</a>. Но между тегами <span class='code_blue'>&lt;body&gt;&lt;/body&gt;</span> вставьте тег <span class='code_blue'>&lt;img&gt;</span>, чтобы получилось следующее:</p>
+			<p class='code' style='text-align: left; margin: 20px 0 20px;'>
+				<span class='code_blue'>&lt;!doctype html&gt;</span><br>
+				<span class='code_blue'>&lt;html&gt;</span><br>
+				<span class='code_blue'>&nbsp;&lt;head&gt;</span><br>
+				<span class='code_blue'>&nbsp;&nbsp;&lt;meta</span> <span class='code_red'>charset</span>=<span class='code_blue'>'utf-8'&gt;</span><br>
+				<span class='code_blue'>&nbsp;&nbsp;&lt;title&gt;</span>Мой сайт<span class='code_blue'>&lt;/title&gt;</span><br>
+				<span class='code_blue'>&nbsp;&lt;/head&gt;</span><br>
+				<span class='code_blue'>&nbsp;&lt;body&gt;</span><br>
+				<span class='code_blue'>&nbsp;&nbsp;&lt;img</span> <span class='code_red'>src</span>=<span class='code_blue'>'image.jpg'</span> <span class='code_red'>alt</span>=<span class='code_blue'>'Моя картинка'&gt;</span><br>
+				<span class='code_blue'>&nbsp;&lt;/body&gt;</span><br>
+				<span class='code_blue'>&lt;/html&gt;</span><br>
+			</p>
+			<p>Сохраните. И откройте в Вашем браузере. Вы увидите вот что:</p>
+			<img style='width: 80%;  margin: 20px 0 20px; text-align: center' src='res/how_to_insert_a_picture_1.jpg' alt='' />
+			<p>Да, да, такой вот квадратик с надписью "Моя картинка" и больше ничего. Почему так произошло? Давайте разберемся!</p>
+			<p>Внутри тега <span class='code_blue'>&lt;img&gt;</span> Вы можете видеть еще несколько атрибутов: <span class='code_red'>src</span>=<span class='code_blue'>'image_for_my_site.jpg'</span> и <span class='code_red'>alt</span>=<span class='code_blue'>'Моя картинка'</span> Наименование атрибута <span class='code_red'>src</span>=<span class='code_blue'>''</span> происходит от английского слова "source", что в переводе означает "ключ, источник", т.е. в нем описывается местоположение или путь к файлу изображения, которое мы хотим вывести на нашей страничке. Но у нас нет  на рабочем столе файла с именем "image_for_my_site.jpg"! Поэтому браузер, не сумев найти нужное, показал нам значок отсутствующего файла изображения в виде квадратика и содержимое следующего атрибута <span class='code_red'>alt</span>=<span class='code_blue'>'Моя картинка'</span>, который специально создан для того, чтобы пользователь не терялся в догадках "Что же здесь за картинка должна быть?!". Давайте исправим положение!</p>
+			<p>Скопируйте на рабочий стол любую картинку с расширением <span class='code'>.jpg</span>, а затем переименуйте ее так, чтобы получилось <span class='code'>image_for_my_site.jpg</span>. Попробуйте снова открыть Ваш файл в браузере(а, если он уже открыт, то просто нажмите F5, что приведет к обновлению страницы). Вот, что получилось у меня:</p>
+			<img style='width: 80%;  margin: 20px 0 20px; text-align: center' src='res/how_to_insert_a_picture_2.jpg' alt='' />
+			<p>Как Вы можете видеть, теперь, для представления Вашей странички недостаточно одного лишь файла <span class='code'>index.html</span>: понадобился еще и файл с изображением. А ведь на сайте их может быть множество! Поэтому, дабы не захламлять пространство рабочего стола, прямо с этих самых пор, мы будем создавать проекты сайтов внутри своей собственной папки. Создайте на рабочем столе папку, назовите ее <span class='code'>project</span> и переместите в нее файл <span class='code'>index.html</span> и <span class='code'>image_for_my_site.jpg</span>. Попробуйте снова запустить файл <span class='code'>index.html</span> на просмотр в браузере. Видите? Ничего не изменилось. А на рабочем столе стало чище. И файлы, относящиеся к сайту, стали аккуратненько располагаться вместе, что, конечно-же, упростит в дальнейшем их поиск, редактирование, переименование и т.п. Помните: что у программиста на рабочем столе, то и в голове! Да, на свалке можно некоторое время побродить и собрать из найденных деталей кособокую тележку. Но для создания космического корабля этого недостаточно.</p>
+			<p>Следующий урок будет посвящен вопросу <a href='lesson_4_ru.html' target='_blank'>Как вставить видео в интернет-страничку</a>.</p>
+		</div>
+		<div id='floatTip'></div>
+<!-- GoogleAnalyticsObject -->		
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-81650137-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+<!-- /GoogleAnalyticsObject -->
+		<div class='block_counters'>
+				<div style='width: 30%; display: inline-block; vertical-align:top;'>
+<!-- whos.amung.us -->
+					<script id="_wau8ek">var _wau = _wau || [];
+					_wau.push(["colored", "w95lnaf4flhj", "8ek", "dbc8ac443555"]);
+					(function() {var s=document.createElement("script"); s.async=true;
+					s.src="http://widgets.amung.us/colored.js";
+					document.getElementsByTagName("head")[0].appendChild(s);
+					})();</script>
+<!-- whos.amung.us -->
+				</div>
+				<div  style='width: 30%; display: inline-block; vertical-align:top;'>
+					<img src='res/niotech.png' onMouseOver='toolTip(" ")' onMouseOut='toolTip()' title='Все права защищены. &copy; 2016' />
+				</div>
+				<div style='width: 30%; display: inline-block; vertical-align:top;'>
+<!-- MyCounter v.2.0 -->
+<script type="text/javascript"><!--
+my_id = 158973;
+my_width = 88;
+my_height = 31;
+my_alt = "MyCounter - счётчик и статистика";
+//--></script>
+<script type="text/javascript"
+  src="https://get.mycounter.ua/counter2.0.js">
+</script><noscript>
+<a target="_blank" href="http://mycounter.ua/"><img
+src="https://get.mycounter.ua/counter.php?id=158973"
+title="MyCounter - счётчик и статистика"
+alt="MyCounter - счётчик и статистика"
+width="88" height="31" border="0" /></a></noscript>
+<!--/ MyCounter -->
+				</div>
+		</div>
+<!--Left ads block. Start-->		
+<div class='block_ads_left'>
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>	
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>
+</div>
+<!--Left ads block. End-->	
+<!--Right ads block. Start-->
+<div class='block_ads_right'>
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>	
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>
+</div>
+<!--Right ads block. End-->	
+	</body>
+<script>
+		document.onmousemove = moveTip;
+		function moveTip(e)
+		{
+			floatTipStyle = document.getElementById("floatTip").style;
+			if (document.all)
+			{ 
+				x = event.clientX + document.body.scrollLeft; 
+				y = event.clientY + document.body.scrollTop; 
+			}
+			else
+			{ 
+				x = e.pageX;
+				y = e.pageY;
+			}
+			floatTipStyle.left = x-170 + 'px';
+			floatTipStyle.top = y-170 + 'px';
+		}
+		function toolTip(msg)
+		{
+			floatTipStyle = document.getElementById("floatTip").style;
+			if (msg)
+			{
+				floatTipStyle.display = "block";
+			}
+			else
+			{ 
+				floatTipStyle.display = "none";
+			} 
+		}
+</script>	
+</html>

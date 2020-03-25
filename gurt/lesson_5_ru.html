@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+<!--Кодировка странички-->	
+		<meta charset='utf-8' />
+<!--Наименование странички. Вы найдете этот текст на вкладке браузера, когда открыта эта страничка-->
+		<title>Как вставить аудио в интернет-страничку</title>
+<!--Иконка на вкладке браузера, в которой открыта эта страничка-->
+		<link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+<!--Когда Вы найдете ссылку на свою страничку в поисковике, то значение атрибута 'content' следующего тега будет под ней. -->
+		<meta name='description' content='Как вставить аудио в интернет-страничку.' />
+<!--Если человек введет в поисковике какое-нибудь слово из значения атрибута 'content' следующего тега, то в списке найденных ссылок будет и Ваш сайт-->
+		<meta name='keywords' content='кружок,веб,разработка,поддубное,великая новоселка,донецкая,школа,донецк,html,css,аудио' />
+<!--Подключение стилей-->
+<!--Вначале, при помощи подключения файла reset.css, отключаем все настройки стилей по-умолчанию в Вашем браузере -->
+		<link rel='stylesheet' href='css/reset.css'>
+		<link rel='stylesheet' href='css/style.css'>
+<!--/Подключение стилей-->
+	</head>
+	<body>
+	<marquee class='block_1'>- - - info - - - К 150-летию Михаила Сергеевича Грушевского силами кружка был создан сайт <a href='http://grush.site88.net' target='_blank'>http://grush.site88.net</a>  - - - info - - - Кружок примет в дар или за символическую плату компьютерную технику любого поколения в любом состоянии - - - info - - - </marquee>
+	<a href='index_ru.html'><img src='res/logo.gif' class='block_logo' title='На главную страницу' alt='' /></a>
+		<div class='block_0'>
+			<h2 class='title_of_block'>Как вставить аудио в интернет-страничку</h2>
+			<p style='text-align: justify;  margin: 20px 0 0 0;'>На определенного рода сайтах не обойтись без внедрения аудиоматериалов. Будь то сайт о Вашей любимой музыкальной группе или же о предпочтительных музыкальных стилях. В этом уроке будет рассказано как сделать так, чтобы посетители Вашего интернет-шедевра смогли прослушать понравившееся музыкальное произведение и загрузить его на свой компьютер. Чуть ниже Вы можете видеть как это будет выглядеть и работать. </p>
+			<div style='text-align: center; margin: 20px 0 20px;'>
+				<h3 style='margin: 0 0 10px; font-style: italic;'>elvis presley - dirty, dirty feeling</h3>
+				<audio style='width: 50%;' src='res/audio.mp3' controls preload='auto' title='elvis presley - dirty, dirty feeling'></audio>
+				<a href='res/audio.rar' style='position: relative; top: -10px; left: 20px;'>Скачать</a>
+			</div>
+			<p style='text-align: justify;  margin: 20px 0 0 0;'>Для того, чтобы добиться абсолютно такого же результата Вам необходимо взять файл <span class='code'>index.html</span> из <a href='lesson_4_ru.html' target='_blank'>предыдущего урока</a> и вместо того, что там располагается между тегами <span class='code_blue'>&lt;body&gt;&lt;/body&gt;</span> вставить нижеследующий код. А в папку проекта положить файл с музыкой <span class='code'>audio.mp3</span> и его же, но заархивированный программой winrar, т.е. <span class='code'>audio.rar</span>:</p>
+			<p class='code' style='text-align: left; margin: 20px 0 20px;'>
+			<span class='code_green'>&lt;!--Следующей строчкой мы открываем блок, в который поместим наименование композиции, проигрыватель с элементами управления и ссылку на заархивированный музыкальный файл для возможности его закачки. С помощью подключения стилей расположим все элементы этого блока по центру, и с гарантированным расстоянием от верхнего и нижнего краев в 20 px.--&gt;</span><br>
+				<span class='code_blue'>&lt;div</span> <span class='code_red'>style</span>=<span class='code_blue'>'text-align: center; margin: 20px 0 20px;'&gt;</span><br>
+				<span class='code_green'>&lt;!--Выведем название композиции шрифтом заголовка 3 уровня и с помощью подключения стилей сделаем шрифт наклонным. Обеспечим расстояние в 10 px между этой надписью и нижеследующими элементами --&gt;</span><br>
+				&nbsp;<span class='code_blue'>&lt;h3</span> <span class='code_red'>style</span>=<span class='code_blue'>'margin: 0 0 10px; font-style: italic;'&gt;</span>elvis presley - dirty, dirty feeling<span class='code_blue'>&lt;/h3&gt;</span><br>
+				<span class='code_green'>&lt;!--Следующая строчка выводит вполовину уменьшенный по ширине  проигрыватель с элементами управления воспроизведением и громкостью--&gt;</span><br>
+				&nbsp;<span class='code_blue'>&lt;audio</span> <span class='code_red'>style</span>=<span class='code_blue'>'width: 50%;'</span> <span class='code_red'>src</span>=<span class='code_blue'>'audio.mp3'</span> <span class='code_red'>controls preload</span>=<span class='code_blue'>'auto'&nbsp;</span><span class='code_red'>title</span>=<span class='code_blue'>'elvis presley - dirty, dirty feeling'&gt;&lt;/audio&gt;</span><br>
+				<span class='code_green'>&lt;!--А это ссылка на заархивированный файл с музыкой для возможности его загрузить себе на компьютер.--&gt;</span><br>
+				&nbsp;<span class='code_blue'>&lt;a</span> <span class='code_red'>href</span>=<span class='code_blue'>'audio.rar'</span> <span class='code_red'>style</span>=<span class='code_blue'>'position: relative; top: -10px; left: 20px;'&gt;</span>Скачать<span class='code_blue'>&lt;/a&gt;</span><br>
+				<span class='code_green'>&lt;!--Закрываем блок--&gt;</span><br>
+			<span class='code_blue'>&lt;/div&gt;</span>
+			</p>
+			<p>Обратите внимание как оформляются комментарии в <span class='code'>html</span>(пояснительный текст,выделенный зеленым цветом). Здесь они излишне многословны для примера. А вообще, чем комментарий короче - тем лучше! Но это вовсе не означает, что их совсем не должно быть! Не стесняйтесь снабжать комментариями малопонятные или неочевидные участки своего кода. Это сослужит Вам добрую службу в будущем, когда Вы захотите разобраться в проекте годичной давности.</p>
+			<p>В следующем уроке Вы узнаете <a href='lesson_6_ru.html' target='_blank'>Как превратить свой компьютер в веб-сервер</a></p>
+		</div>
+		<div id='floatTip'></div>
+<!-- GoogleAnalyticsObject -->		
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-81650137-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+<!-- /GoogleAnalyticsObject -->
+		<div class='block_counters'>
+				<div style='width: 30%; display: inline-block; vertical-align:top;'>
+<!-- whos.amung.us -->
+					<script id="_wau8ek">var _wau = _wau || [];
+					_wau.push(["colored", "w95lnaf4flhj", "8ek", "dbc8ac443555"]);
+					(function() {var s=document.createElement("script"); s.async=true;
+					s.src="http://widgets.amung.us/colored.js";
+					document.getElementsByTagName("head")[0].appendChild(s);
+					})();</script>
+<!-- whos.amung.us -->
+				</div>
+				<div  style='width: 30%; display: inline-block; vertical-align:top;'>
+					<img src='res/niotech.png' onMouseOver='toolTip(" ")' onMouseOut='toolTip()' title='Все права защищены. &copy; 2016' />
+				</div>
+				<div style='width: 30%; display: inline-block; vertical-align:top;'>
+<!-- MyCounter v.2.0 -->
+<script type="text/javascript"><!--
+my_id = 158973;
+my_width = 88;
+my_height = 31;
+my_alt = "MyCounter - счётчик и статистика";
+//--></script>
+<script type="text/javascript"
+  src="https://get.mycounter.ua/counter2.0.js">
+</script><noscript>
+<a target="_blank" href="http://mycounter.ua/"><img
+src="https://get.mycounter.ua/counter.php?id=158973"
+title="MyCounter - счётчик и статистика"
+alt="MyCounter - счётчик и статистика"
+width="88" height="31" border="0" /></a></noscript>
+<!--/ MyCounter -->
+				</div>
+		</div>
+<!--Left ads block. Start-->		
+<div class='block_ads_left'>
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>	
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>
+</div>
+<!--Left ads block. End-->	
+<!--Right ads block. Start-->
+<div class='block_ads_right'>
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>	
+	<div style='border-radius: 10px; opacity: .7;' title='Correct hosting!
+ Sites of our students are here.'>
+		<a href="https://www.000webhost.com/922191.html" onClick="this.href='https://www.000webhost.com/922191.html'"  target="_blank"><img src="https://www.000webhost.com/images/banners/160x600/banner4.gif" alt="Web hosting" width="120" height="450" border="0" /></a>
+	</div>
+</div>
+<!--Right ads block. End-->	
+	</body>
+<script>
+		document.onmousemove = moveTip;
+		function moveTip(e)
+		{
+			floatTipStyle = document.getElementById("floatTip").style;
+			if (document.all)
+			{ 
+				x = event.clientX + document.body.scrollLeft; 
+				y = event.clientY + document.body.scrollTop; 
+			}
+			else
+			{ 
+				x = e.pageX;
+				y = e.pageY;
+			}
+			floatTipStyle.left = x-170 + 'px';
+			floatTipStyle.top = y-170 + 'px';
+		}
+		function toolTip(msg)
+		{
+			floatTipStyle = document.getElementById("floatTip").style;
+			if (msg)
+			{
+				floatTipStyle.display = "block";
+			}
+			else
+			{ 
+				floatTipStyle.display = "none";
+			} 
+		}
+</script>	
+</html>
