@@ -1,2 +1,2 @@
 # woxx13.github.io
-my_sites
+<a href='woxx13.github.io/lab'>Лаборатория домашней автоматики</a>
