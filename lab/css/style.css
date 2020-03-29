@@ -30,56 +30,6 @@ body
 	line-height: 		3;
 	
 }
-.photo_box
-{
-	text-align:			center;
-	margin: 			2% 0 4%;
-}
-.img_1
-{
-
-    background: 		url(../res/wi-fi_socket_1.jpg); /* Путь к файлу с исходным рисунком  */
-    display: 			inline-block ;
-    width: 				200px; /* Ширина рисунка */
-    height: 			200px; /*  Высота рисунка */
-	margin: 			20px 3% 0;
-	transition: 		all 1s ease-in-out;
-}
-.img_1:hover
-{
-    background: 		url(../res/wi-fi_socket_1_0.jpg); /* Путь к файлу с заменяемым рисунком  */
-	transition: 		all 1s ease-in-out;
-}
-.img_2
-{
-
-    background: 		url(../res/wi-fi_socket_2.jpg); /* Путь к файлу с исходным рисунком  */
-    display: 			inline-block ;
-    width: 				200px; /* Ширина рисунка */
-    height: 			200px; /*  Высота рисунка */
-	margin: 			20px 3% 0;
-	transition: 		all 1s ease-in-out;
-}
-.img_2:hover
-{
-    background: 		url(../res/wi-fi_socket_2_0.jpg); /* Путь к файлу с заменяемым рисунком  */
-	transition: 		all 1s ease-in-out;
-}
-.img_3
-{
-
-    background: 		url(../res/wi-fi_socket_3.jpg); /* Путь к файлу с исходным рисунком  */
-    display: 			inline-block ;
-    width: 				200px; /* Ширина рисунка */
-    height: 			200px; /*  Высота рисунка */
-	margin: 			20px 3% 0;
-	transition: 		all 1s ease-in-out;
-}
-.img_3:hover
-{
-    background: 		url(../res/wi-fi_socket_3_0.jpg); /* Путь к файлу с заменяемым рисунком  */
-	transition: 		all 1s ease-in-out;
-}
 .block_0 h3
 {
 	line-height: 		3;	
@@ -93,6 +43,51 @@ body
 	text-align:			justify;
 	text-indent:		2em;
 }
+/*/////////////////////////////////			Свойства фото. Начало		/////////////////////////////*/	
+.photo_box
+{
+	text-align:			center;
+	margin: 			2% 0 4%;
+}
+.img_1
+{
+    background: 		url(../res/wi-fi_socket_1.jpg);
+}
+.img_2
+{
+    background: 		url(../res/wi-fi_socket_2.jpg);
+}
+.img_3
+{
+    background: 		url(../res/wi-fi_socket_3.jpg);
+}
+.img_wow
+{
+	position: 			relative;
+	display: 			inline-block ;
+	width: 				200px; 								/* Ширина рисунка */
+    height: 			200px; 								/*  Высота рисунка */
+	margin: 			20px 3% 0;
+	transition: 		1s opacity;
+}
+.img_wow:after
+{
+	content: 			"";
+	background: 		inherit;
+	position: 			absolute;
+	top: 				0;
+	left: 				0;
+	bottom: 			0;
+	right: 				0;
+	background-position:-200px 0px;
+	opacity: 			0;
+	transition: 		1s opacity;
+}
+.img_wow:hover:after
+{
+    opacity:			1;
+}
+/*/////////////////////////////////			Свойства фото. Конец		/////////////////////////////*/	
 #floatTip 
 {
 	position: 				absolute;
