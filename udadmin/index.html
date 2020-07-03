@@ -1,0 +1,135 @@
+<!doctype html>
+<html  id='begin'>
+	<head>
+		<meta charset='utf-8'>
+		<title>Удаленная компьютерная помощь</title>
+		<meta name='viewport' 				content='width=device-width, initial-scale=1'>
+		<meta http-equiv='x-ua-compatible' 	content='ie=edge'>
+		<meta name='author' 				content='Kuzmenko Vadim aka woxx'>
+		<meta name='description' 			content='Удаленная компьютерная помощь'>
+		<meta name='keywords' 				content='удаленная,компьютерная, помщь,администрирование,teamviewer,сисадмин'>
+		<link rel='stylesheet' 				href='css/reset.css'>
+		<link rel='stylesheet' 				href='css/style.css'>
+		<link rel='shortcut icon' 			href='favicon.ico'>
+		<!--[if lt ie 9]>
+		<script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+		<![endif]-->
+	</head>
+	<script>
+//получение актуального курса доллара с сайта приватбанка
+	let request_url = 'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11';
+	let request = new XMLHttpRequest();
+	request.open('GET', request_url);
+	request.responseType = 'json';
+	request.send();
+	request.onload = function()
+	{
+	  let file = request.response;
+	  window.current_rate = file[0]['sale'];
+	  document.getElementById('rate').innerHTML = current_rate;
+	}
+	</script>
+	<body>
+		<!--Многоуровневое, выдвигающееся из-за края экрана при нажатии на логотип, меню. Начало-->
+		<nav>
+			<input type="checkbox" id="showmenu"/>
+			<label for="showmenu" class="showmenu"><img src='res/logo.png' alt=''></label>
+			<!-- <label for="showmenu" class="back"></label> -->
+			<ul>
+				<li><a href="#begin">Главная</a></li>
+				<li><a href="#block_2">Что для этого нужно</a></li>
+				<li><a href="#block_3">Контакты</a></li>
+			</ul>
+		</nav>
+		<!--Многоуровневое, выдвигающееся из-за края экрана при нажатии на логотип, меню. Конец-->
+		<section class='block_0' id='block_1'>
+			<h1>Главная</h1>
+			<p>Уважаемые посетители! Если в Вашем населенном пункте нет компьютерного специалиста, зовите нас!</p>
+			<h3 style='text-align: center; margin: 5% 0;'>Мы делаем это удаленно!</h3>
+			<p>Для всех пользователей:</p>
+			<ul style='margin: 0 5% 5% 5%;line-height: 1.25em;'>
+				<li>Диагностика компьютерной техники.</li>
+				<li>Очистка дисков от временных, устаревших или потерянных файлов.</li>
+				<li>Обнаружение и лечение вирусов.</li>
+				<li>Устранение надоедливых окон с рекламой или непонятными сообщениями.</li>
+				<li>Оптимизация и ускорение работы компьютера.</li>
+			</ul>
+			<p>Для продвинутых пользователей:</p>
+			<ul style='margin: 0 5% 5% 5%;line-height: 1.25em;'>
+				<li>Восстановление нормальной работы роутера с вышедшим из строя WAN-портом.</li>
+				<li>Диагностика и восстановление работоспособности жесткого диска.</li>
+				<li>Установка Windows. Здесь еще понадобится флэшка на 4-8 Гб и смартфон с Watsapp для обратной связи.</li>
+			</ul>
+		</section>
+		<section class='block_0' id='block_2'>
+			<h1>Что для этого нужно</h1>
+			<ol style='margin: 0 5%;line-height: 1.25em;'>
+				<li>Связаться с нами любым доступным для Вас способом:</li>
+					<ul style='margin: 1% 5%;line-height: 1.25em;'>
+						<li>udadmi@gmail.com</li>
+						<li><a href='http://fb.me/udadmi'>facebook</a></li>
+					</ul>
+				<li>Описать свою проблему(для того чтобы мы поняли, что она  решаема удаленно в принципе)</li>
+				<li>Договориться об удобном для Вас времени проведения обязательной предварительной диагностики, которая должна быть предоплачена переводом на карту «Приватбанка» эквивалентом 5$, в гривнах, по курсу "Приватбанка". Калькулятор для удобства приводится в конце этого раздела.</li>
+				<h3 style='text-align: center;'> Без диагностики никакие работы не проводятся!</h3>				
+				<li>Установить на свой компьютер программу teamviewer <a href='https://drive.google.com/file/d/1HtPlntj23r3VptJRhUHqrx63ChTGanfN/view?usp=sharing' target='_blanc'>отсюда</a>.  Время скачивания программ, равно как и время, затраченное на процессы, выполняемые компьютером без участия человека (проверка на вирусы, дефрагментация и т.п.) в стоимость работ не включается.</li>
+				<li>Запустить программу teamviewer, cообщить нам ее ID и пароль.</li>
+			</ol>
+			<h3 style='text-align: center;'>Стоимость работ для частных лиц:</h3>
+			<ul style='margin: 0 5%;line-height: 1.25em;'>
+				<li>Первый час 	-  5$.</li>
+				<li>Последующие -  10$.</li>
+			</ul>
+			<h3 style='text-align: center;'>Для предпринимателей и бюджетных организаций:</h3>
+			<ul style='margin: 0 5%;line-height: 1.25em;'>
+				<li>Первый час 	-  15$.</li>
+				<li>Последующие -  20$.</li>
+			</ul>
+			<h3 style='text-align: center;'>
+			<select id='list_1' onchange='calc_and_change_rate_and_dollar()'>
+				<option>1</option>
+				<option>5</option>
+				<option>10</option>
+				<option>15</option>
+				<option>20</option>
+				<option>50</option>
+			</select> <span id='dollar'>доллар</span> стоит: <span style='color: red;' id ='rate'>(если Вы читаете этот текст, пройдите, пожалуйста, <a href='https://www.privat24.ua/' target='_blank'>сюда</a> или обновите страницу)</span> гривны</h3>
+		</section>
+		<section class='block_0' id='block_3'>
+			<h1>Контакты</h1>
+			<ul style='margin: 1% 5%;line-height: 1.25em;'>
+				<li>udadmi@gmail.com</li>
+				<li><a href='http://fb.me/udadmi'>facebook</a></li>
+			</ul>
+			<p>Письма с любым содержанием, но не имеющие в теме письма слова "Заявка" не рассматриваются и отправляются прямиком в спам. Извините! Защита от роботов-спамеров.</p>
+		</section>
+		<section>
+			<div id='floatTip'></div>
+			<div style='text-align: center; margin-top: 20px; z-index: 1900;'>
+				<div  style='width: 30%; display: inline-block; vertical-align:top;'>
+					<img src='res/niotech.png' title='All rights reserved. &copy; 2020
+Write to me: woxx13@gmail.com' />
+				</div>
+			</div>
+		</section>
+	</body>
+	<script>
+//Кулькулятор
+	function calc_and_change_rate_and_dollar()
+	{
+		if(list_1.value == '1')
+		{
+			rate.innerHTML = (+current_rate) * (+list_1.value);
+			dollar.innerHTML = 'доллар';
+			return true;	
+		}
+		
+		else
+		{
+			rate.innerHTML = (+current_rate) * (+list_1.value);
+			dollar.innerHTML = 'долларов';
+			return true;
+		}	
+	}
+ </script>
+</html>
