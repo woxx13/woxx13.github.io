@@ -1,0 +1,153 @@
+<!doctype html>
+<html  id='begin'>
+	<head>
+		<meta charset='utf-8'>
+		<title>Home Automation Laboratory</title>
+		<meta name='viewport' 				content='width=device-width, initial-scale=1'>
+		<meta http-equiv='x-ua-compatible' 	content='ie=edge'>
+		<meta name='author' 				content='Kuzmenko Vadim aka woxx'>
+		<meta name='description' 			content='Home Automation Laboratory'>
+		<meta name='keywords' 				content='laboratory,home, automation,wi-fi,internet,socket,automatic, filling,tank,smart,clever,home,IOT'>
+		<link rel='stylesheet' 				href='css/reset.css'>
+		<link rel='stylesheet' 				href='css/style.css'>
+		<link rel='shortcut icon' 			href='favicon.ico'>
+	</head>
+	<body>
+<!--Многоуровневое, выдвигающееся из-за края экрана при нажатии на логотип, меню. Начало-->
+		<nav>
+			<input type='checkbox' id='showmenu'/>
+			<label for='showmenu' class='showmenu'><img src='res/logo.png' alt=''></label>
+			<!-- <label for='showmenu' class='back'></label> -->
+			<ul>
+				<li>
+					<a href='index_en.html'>Choose language</a>
+					<a href='index_ua.html'>Обрати мову</a>
+					<a href='index.html'>Выбрать язык</a>
+				</li>
+				<li><a href='#begin'>Home</a></li>
+				<li>
+					<a href='#block_2'>Catalog</a>
+					<input type='checkbox' id='menu2'>
+					<label for='menu2'>&#9660;</label>
+					<ul>
+						<li><a href='#block_2_1'>Wi-Fi socket</a></li>
+					</ul>
+					<ul>
+						<li><a href='#block_2_2'>Internet socket</a></li>
+					</ul>
+					<ul>
+						<li><a href='#block_2_3'>Automatic refill</a></li>
+					</ul>
+					<ul>
+						<li><a href='#block_2_4'>Visualization and control</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href='#block_3'>Order</a>
+					<input type='checkbox' id='menu3'>
+				</li>
+				<li>
+					<a href='#block_4'>Contacts</a>
+					<input type='checkbox' id='menu5'>
+				</li>
+			</ul>
+		</nav>
+<!--Многоуровневое, выдвигающееся из-за края экрана при нажатии на логотип, меню. Конец-->
+		<section class='block_0' id='block_1'>
+			<h1>Home</h1>
+			<p>The laboratory works tirelessly to develop and implement smart devices for the home and beyond in hardware. Both traditional and non-standard purposes. All devices are equipped with proprietary software.</p>
+			<p>You can find examples of development in the section <a href='#block_2'>Catalog.</a></p>
+			<p>And in the <a href='#block_3'>order</a> section you can order a device you like, a system of devices or the development of something new.</p>
+			<p>We warn you that we DO NOT have a store, devices are often one of a kind, sometimes with unique properties and characteristics, so the price and terms of development and manufacture are appropriate.</p>
+		</section>
+		<section class='block_0' id='block_2'>
+			<h1>Catalog</h1>
+			<article>
+				<h3 id='block_2_1'>Wi-Fi socket</h3>
+				<hr>
+				<div class='photo_box'>
+					<a href='#' target='_self' class='img_1 img_wow'></a>
+					<a href='#' target='_self' class='img_2 img_wow '></a>
+					<a href='#' target='_self' class='img_3 img_wow '></a>
+				</div>
+				<p>A simple and reliable device that allows you to turn on or off electrical appliances with a capacity of up to 2 kilowatts from your mobile phone, tablet, computer or laptop. This can be a pump in a well, lighting in the yard, garage doors and similar remote objects, which are inconvenient to turn on / off in the usual way for some reason. To work with the device, neither the Internet nor the pre-installation of any applications is needed! Details of use are in the video.</p>
+				<video style='width: 100%;' poster='res/wi_fi_socket_poster_en.jpg' controls>
+					<source  src='res/wi_fi_socket_en.mp4'>
+				</video>
+			</article>
+			<article>
+				<h3 id='block_2_2'>Internet socket</h3>
+				<hr>
+				<div class='photo_box'>
+					<a href='#' target='_self' class='img_1 img_wow'></a>
+					<a href='#' target='_self' class='img_2 img_wow '></a>
+					<a href='#' target='_self' class='img_3 img_wow '></a>
+				</div>
+				<p>Structurally, this is a complete copy of <a href='#block_2_1'>Wi-Fi socket</a>, but different in software. Those this device also allows you to turn on or off electrical appliances with a capacity of up to 2 kilowatts from your mobile phone, tablet, computer or laptop. But at the same time, physically, you can be even on the other hemisphere of the Earth. However, to implement this functionality of the device, there must be a router with a reliable Internet connection and appropriate settings within its reach.</p>
+			</article>
+			<article>
+				<h3 id='block_2_3'>Automatic tank refill</h3>
+				<hr>
+				<div class='photo_box'>
+					<a href='#' target='_self' class='img_3_1 img_wow'></a>
+					<a href='#' target='_self' class='img_3_2 img_wow '></a>
+					<a href='#' target='_self' class='img_3_3 img_wow '></a>
+				</div>
+				<p>A device that automatically turns on the pump if the liquid level in the controlled tank has dropped to the minimum level and turns it off if the level has reached the maximum value. The device consists of an original system of reed switches placed in a hermetically sealed polypropylene pipe immersed in a controlled container, a float, a control unit, a power supply and connecting cables.</p>
+			</article>
+			<article>
+				<h3 id='block_2_4'>Visualization and process control</h3>
+				<hr>
+				<div class='photo_box'>
+					<video style='width: 200px;' poster='res/aws_poster.jpg' controls>
+						<source  src='heap/visualization.mp4' >
+					</video>
+				</div>
+				<p>Any device purchased from our laboratory can be equipped with this additional application. Suppose you need to not only turn on and off the drip irrigation tap somewhere in a remote area, but also control the degree of filling of the associated buffer tank. Let me <a href='https://woxx13.github.io/aws' target='_blank'>introduce</a> you to an emulation of such an application.</p>
+			</article>
+		</section>
+		<section class='block_0' id='block_3'>
+			<h1>Order</h1>
+			<p>You can order the device you like by cash on delivery service <a href='https://novaposhta.ua/' target='_blank'>'Нова Пошта'</a> by writing us a letter indicating the following data:</p>
+			<ul style='margin: 0 5% 5% 5%;line-height: 1.25em;'>
+				<li>What you want to order?</li>
+				<li>Last Name, Name, Middle name of recipient.</li>
+				<li>Phone of recipient.</li>
+				<li>Delivery address.</li>
+			</ul>
+			<p>If you have a complete understanding of which device you need, then we can develop such a device for you from scratch. <a href='#block_4'>Write!</a></p>
+		</section>
+		<section class='block_0' id='block_4'>
+			<h1>Contacts</h1>
+			<p>homautolab@gmail.com</p>
+		</section>
+		<section>
+			<div style='text-align: center; margin-top: 20px; z-index: 1900;'>
+				<div  style='width: 100%; display: inline-block; vertical-align:top;'>
+					<img src='res/niotech.png' title='All rights reserved. &copy; 2021
+Write to me: woxx13@gmail.com' />
+				</div>
+				<div  style='width: 100%;vertical-align:top;'>
+					<!-- Default Statcounter code for lab
+					https://woxx13.github.io/lab/ -->
+					<script type="text/javascript">
+					var sc_project=12359124; 
+					var sc_invisible=0; 
+					var sc_security="c518878b"; 
+					var scJsHost = "https://";
+					document.write("<sc"+"ript type='text/javascript' src='" +
+					scJsHost+
+					"statcounter.com/counter/counter.js'></"+"script>");
+					</script>
+					<noscript><div class="statcounter"><a title="Web Analytics
+					Made Easy - StatCounter" href="https://statcounter.com/"
+					target="_blank"><img class="statcounter"
+					src="https://c.statcounter.com/12359124/0/c518878b/0/"
+					alt="Web Analytics Made Easy -
+					StatCounter"></a></div></noscript>
+					<!-- End of Statcounter Code -->
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
