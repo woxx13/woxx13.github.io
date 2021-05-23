@@ -1,4 +1,4 @@
-body
+﻿body
 {	
 	/* background:			rgba(150, 150, 37, .3); */
 	background:			#ddd;
@@ -10,7 +10,7 @@ body
 	width:				auto;
 	height:				auto;
 	border:				1px solid #000;
-	margin:				.3% 5% .3%;
+	margin:				.3% 5% .3% 5%;
 	background:			rgba(250, 212, 115, .3);
 	padding:			3%;
 	border-radius:		1em;
@@ -20,14 +20,15 @@ body
 	margin:				1% 5% .3%;
 	
 }
-.block_0:nth-last-child(1)
+/* .block_0:nth-last-child(1)
 {
 	margin:				.3% 5% 5%;
-}
+} */
 .block_0 h1
 {
 	text-align:			center;
 	line-height: 		3;
+	color:				#497E76;
 	
 }
 .block_0 h3
@@ -42,6 +43,25 @@ body
 	margin-bottom:		3%;
 	text-align:			justify;
 	text-indent:		2em;
+}
+.block_0  ul
+{
+	 list-style-image:	none;
+	 list-style-type:	disc;
+}
+hr
+{
+  display: 				block;
+  margin-top: 			0.5em;
+  margin-bottom: 		0.5em;
+  margin-left: 			auto;
+  margin-right: 		auto;
+  border-style: 		inset;
+  border-width: 		1px;
+  border: 				none; /* Убираем границу для браузера Firefox */
+  color: 				#497E76; /* Цвет линии для остальных браузеров */
+  background-color: 	#497E76; /* Цвет линии для браузера Firefox и Opera */
+  height: 				1px; /* Толщина линии */
 }
 /*/////////////////////////////////			Свойства фото. Начало		/////////////////////////////*/	
 .photo_box
@@ -60,6 +80,18 @@ body
 .img_3
 {
     background: 		url(../res/wi-fi_socket_3.jpg);
+}
+.img_3_1
+{
+    background: 		url(../res/aws_1.jpg);
+}
+.img_3_2
+{
+    background: 		url(../res/aws_2.jpg);
+}
+.img_3_3
+{
+    background: 		url(../res/aws_3.jpg);
 }
 .img_wow
 {
