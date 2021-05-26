@@ -1,7 +1,12 @@
-﻿body
+﻿@font-face
+{
+	font-family: 		'Roboto Regular';
+	src: 				url('../res/roboto-regular.ttf');
+}
+body
 {	
-	/* background:			rgba(150, 150, 37, .3); */
 	background:			#ddd;
+	font-family: 		'Roboto Regular';
 }
 
 .block_0
@@ -29,16 +34,19 @@
 	text-align:			center;
 	line-height: 		3;
 	color:				#497E76;
+	font-size: 			2.9vh;
 	
 }
 .block_0 h3
 {
-	line-height: 		3;	
+	line-height: 		3;
+	font-size: 			2.7vh;	
 }
 .block_0 p
 {
 	color:				#333;
-	font-size:			1.1em;
+	/* font-size:			1.1em; */
+	font-size: 			calc((70vmax — 30rem)/100 + .5rem);
 	line-height: 		1.5;
 	margin-bottom:		3%;
 	text-align:			justify;
@@ -62,6 +70,19 @@ hr
   color: 				#497E76; /* Цвет линии для остальных браузеров */
   background-color: 	#497E76; /* Цвет линии для браузера Firefox и Opera */
   height: 				1px; /* Толщина линии */
+}
+.block_0 a:link
+{
+	color:				#0f211a;
+}
+.block_0 a:visited
+{
+	color:				#497E76;
+}
+.block_0 a:hover
+{
+	text-decoration: 	none;
+	color:				#0f211a;
 }
 /*/////////////////////////////////			Свойства фото. Начало		/////////////////////////////*/	
 .photo_box
@@ -141,10 +162,9 @@ label
 	cursor:						pointer;
 }
 nav
- {	
+{	
 	 user-select:				none;
-}	
-	
+}		
 nav .showmenu
 {	
     position:					fixed;
@@ -152,10 +172,8 @@ nav .showmenu
     margin-left:				-10px;
     padding:					5px 10px 10px;
     top:						2px;
-    font-size:					23px;
 	z-index:					500;
-}	
-	
+}		
 nav .back
 {	
     position:					fixed;
@@ -164,8 +182,7 @@ nav .back
     bottom:						0;
     left:						0;
     transition:					background-color .3s;
-}	
-	
+}		
 nav ul
 {	
     list-style:					none;
@@ -173,8 +190,8 @@ nav ul
     color:						#fff;
     overflow:					hidden;
 	z-index:					400;
+    font-size:					13px;     /*Размер шрифта для меню*/
 }
-
 nav>ul
 {
     position:					fixed;
@@ -184,7 +201,7 @@ nav>ul
     display:					block;
     width:						220px;
     margin:						0;
-    padding:					60px 0 20px;
+    padding:					100px 0 20px;
     text-transform:				uppercase;
     line-height:				2em;
     background-color:			#2c2c2c;
@@ -195,43 +212,40 @@ nav>ul
     will-change:				transform;
     backface-visibility:		hidden;
 }
-
 nav ul ul
 {
-    font-size:					.8em;
-    background-color:			#ddd;
+    font-size:					.7em;
+    background-color:			#ddd;		/*Цвет фона раздвигающегося подменю*/
     max-height:					0;
     transition:					max-height .3s ease-in-out;
 }
-
 nav ul label
 {
     position:					absolute;
     right:						0;
-    margin-top:					-34px;
+    margin-top:					-32px;		/*Расстояние отступа треугольных маркеров меню*/
     padding:					10px;
     line-height:				normal;
 }
-
 nav a
 {  
     display:					block;
-    text-align:					center;
+    text-align:					left;
+	margin-left:				20px;
     text-decoration:			none;
     color:						#fff;
 }
-
 nav ul ul a
 {
-	color:						#000;
+	color:						#0f211a;
+	text-align:					right;
+	margin-right:				20px;
 }
-
 #showmenu:checked~.back
 {
     background-color:			rgba(0,0,0,.5);
     bottom:						0;
 }
-
 nav a:hover,nav .showmenu:hover,nav ul label:hover
 {
 	opacity:					0.7;
