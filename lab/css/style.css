@@ -45,8 +45,7 @@ body
 .block_0 p
 {
 	color:				#333;
-	/* font-size:			1.1em; */
-	font-size: 			calc((70vmax — 30rem)/100 + .5rem);
+	font-size: 			calc( (70vmax — 30rem)/100 + .4rem);
 	line-height: 		1.5;
 	margin-bottom:		3%;
 	text-align:			justify;
@@ -66,10 +65,10 @@ hr
   margin-right: 		auto;
   border-style: 		inset;
   border-width: 		1px;
-  border: 				none; /* Убираем границу для браузера Firefox */
-  color: 				#497E76; /* Цвет линии для остальных браузеров */
-  background-color: 	#497E76; /* Цвет линии для браузера Firefox и Opera */
-  height: 				1px; /* Толщина линии */
+  border: 				none; 		/* Убираем границу для браузера Firefox */
+  color: 				#497E76; 	/* Цвет линии для остальных браузеров */
+  background-color: 	#497E76; 	/* Цвет линии для браузера Firefox и Opera */
+  height: 				1px; 		/* Толщина линии */
 }
 .block_0 a:link
 {
