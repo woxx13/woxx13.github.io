@@ -15,7 +15,7 @@ button
 	font-weight:		800;
 	text-transform:		uppercase;
 }
-#on,#run,#pause,#off,#load_1,#load_2,#sanit
+#on,#run,#off,#load_1,#load_2,#sanit
 {
 	cursor:				pointer;
 }
@@ -32,6 +32,12 @@ marquee
 	position:			absolute;
 	width:				100px;
 	height:				100px;
+}
+.tank_small
+{
+	position:			absolute;
+	width:				70px;
+	height:				70px;
 }
 .batcher
 {
