@@ -20,9 +20,9 @@ function set_recipe(recipe_id)
 //Извлечь из базы выбраный рецепт. Если не выбран ни один, отключить кнопку "run".
 function get_recipe()
 {
-	if (localStorage.getItem('recipe') !== null)
+	if (get('recipe') !== null)
 	{
-		return localStorage.getItem('recipe');
+		return get('recipe');
 	}
 	else
 	{
@@ -109,6 +109,8 @@ window.onload = function init()
 	}, 2000)
 };
 
+alert("Представьте, что Вам нужно смешать два ингредиента - основу и присадку. Причем, основы берется всегда 100 массовых частей, а присадки  от 1 до 10 массовых частей (1%-10%), в зависимости от выбранного рецепта. Данное приложение эмулирует работу такой системы. Для начала работы воспользуйтесь меню(значок шестеренки слева-вверху).");
+
 /**
 *     Обработчики взаимодействия с видимыми элементами интерфейса(кнопками, пунктами меню и т.д.) 
 */
@@ -156,6 +158,10 @@ on.onclick = function()
 //Обработчик нажатия на кнопку "off"	
 off.onclick = function()
 {
+	var killId = setTimeout(function()
+	{
+		for (var i = killId; i > 0; i--) clearInterval(i)
+	}, 0);
 	set('btn_on_background', 		'#fff');
 	set('btn_run_background', 		'#fff');
 	set('btn_off_background', 		'#fff');
@@ -199,191 +205,231 @@ off.onclick = function()
 //Обработчик нажатия на кнопку "run"	
 run.onclick = function()
 {
-	let level_max_1 = parseInt(get('batcher_1_src').slice(14).match(/\d+/));//Уровень, с которого начинается опорожнение дозатора 1(после slice() остается, например, "10.gif", а после match() - "10")	
-	let level_max_2 = 10;
-	let level_min_1 = get_recipe();//сколько десятых частей нужно выгрузить из дозатора 1, численно равно выбраному рецепту
-	let level_min_2 = 10;
-	let i_1 = 0;//счетчик для дозатора 1
-	let i_2 = 0;//счетчик для дозатора 2
-	let begin_index;
 	if(get('console_mixer_1_text') == 'Готов к работе!' && get('console_batcher_1_text') == 'Готов к работе!' && get('console_batcher_2_text') == 'Готов к работе!' && get('recipe'))
 	{
-		function myLoop_1()
-		{           
-			setTimeout(function()
-			{    
-				set('batcher_1_src', 'res/batcher_1_'+ (level_max_1 - i_1) +'.gif');
-				set('mixer_1_strain_gauge_text', String(i_1));
-				// alert(get('mixer_1_strain_gauge_text')+" "+ i_1);
-				set('batcher_1_tap_1_src', 		'res/tap_vert_open_ud.gif');
-				set('batcher_1_tube_1_src',		'res/tube_2010.gif');
-				set('batcher_1_tube_2_src',		'res/tube_2010.gif');
-				set('batcher_1_tube_3_src',		'res/tube_2010.gif');
-				set('batcher_1_tube_4_src',		'res/tube_2100.gif');
-				if(i_1 % 3 == 0)
-				{
-					set('mixer_1_src', 'res/mixer_1_'+ (i_1/3) +'.gif');
-					set('mixer_1_sensor_min_src', 'res/sensor_green.gif');
-				}
-					
-				render();
-				i_1++;
-				if ((level_max_1 - i_1) == 9)
-				{           
-					set('console_batcher_1_text', 'Идет смешивание!');
-					set('btn_load_1_background', '#aaa');
-					set('batcher_1_sensor_max_src', 'res/sensor_red.gif');
-				}
-				if ((level_max_1 - i_1) == 1)
-				{           
-					set('batcher_1_sensor_min_src', 'res/sensor_red.gif');
-				}
-				if (i_1 <= level_min_1)
-				{           
-					myLoop_1();
-				}
-				else
-				{
-					set('batcher_1_tap_1_src', 		'res/tap_vert_close.gif');
-					set('batcher_1_tube_1_src',		'res/tube_1010.gif');
-					set('batcher_1_tube_2_src',		'res/tube_1010.gif');
-					set('batcher_1_tube_3_src',		'res/tube_1010.gif');
-					set('batcher_1_tube_4_src',		'res/tube_1100.gif');
-					set('btn_load_1_background',	'#fff');
+//Блокируем все кнопки, кроме "off"		
+		set('btn_on_background', 		'#fff');
+		set('btn_run_background', 		'#fff');
+		set('btn_off_background', 		'#f00');
+		set('btn_load_1_background',	'#fff');
+		set('btn_load_2_background', 	'#fff');
+		set('btn_sanit_background', 	'#fff');
+		
+		
+		set('console_batcher_1_text', 'Идет дозирование!');
+		set('console_batcher_2_text', 'Идет дозирование!');
+		set('console_mixer_1_text', 'Идет дозирование!');
+		
+		let level_max_1 = parseInt(get('batcher_1_src').slice(14).match(/\d+/));//Уровень, с которого начинается опорожнение дозатора 1(после slice() остается, например, "10.gif", а после match() - "10")	
+		let level_max_2 = 10;
+		let level_min_1 = get_recipe();//сколько десятых частей нужно выгрузить из дозатора 1, численно равно выбраному рецепту
+		let level_min_2 = 10;
+		let i_1 = 0;//счетчик для дозатора 1
+		let i_2 = 0;//счетчик для дозатора 2
+		let level_mixer_1_after_unloading_1;//Переменная хранит уровень продукта в миксере 1 после опорожнения дозатора 1
+
+		unloading_1();
+//Функция запуска опорожнения дозатора 1(при этом содержимым дозатора 1 загружается в миксер 1, с помощью тензодатчика миксера 1 проводится взвешивание. Показания веса выводятся на индикатор. )		
+		function unloading_1()
+		{
+
+			let timer = 500;
+//Функция организации петли обработки данных до достижения условий, определяемых алгоритмом. Функция будет повторять свою работу через время, определенное переменной timer. При этом, без перезагрузки страницы, обновляются определяемые алгоритмом элементы  приложения.(картинки, тексты и т.п.)
+			function myLoop_1()
+			{           
+				setTimeout(function()
+				{    
+					set('batcher_1_src', 'res/batcher_1_'+ (level_max_1 - i_1) +'.gif');
+					set('mixer_1_strain_gauge_text', String(i_1));
+					set('batcher_1_tap_1_src', 		'res/tap_vert_open_ud.gif');
+					set('batcher_1_tube_1_src',		'res/tube_2010.gif');
+					set('batcher_1_tube_2_src',		'res/tube_2010.gif');
+					set('batcher_1_tube_3_src',		'res/tube_2010.gif');
+					set('batcher_1_tube_4_src',		'res/tube_2100.gif');
+					if(i_1 % 3 == 0)
+					{
+						set('mixer_1_src', 'res/mixer_1_'+ (i_1/3) +'.gif');
+						set('mixer_1_sensor_min_src', 'res/sensor_green.gif');
+					}
+						
 					render();
+					//alert(get('mixer_1_strain_gauge_text')+" "+ i_1);
+					i_1++;
 					
-					
-					begin_index = parseInt(get('mixer_1_src').slice(12).match(/\d+/));
-					myLoop_2();
-				}
-			}, 500)
+					if ((level_max_1 - i_1) == 9)
+					{           
+						//set('console_batcher_1_text', 'Идет смешивание!');
+						//set('btn_load_1_background', '#aaa');
+						set('batcher_1_sensor_max_src', 'res/sensor_red.gif');
+					}
+					if ((level_max_1 - i_1) == 1)
+					{           
+						set('batcher_1_sensor_min_src', 'res/sensor_red.gif');
+					}
+					if (i_1 <= level_min_1)
+					{           
+						myLoop_1();
+					}
+					else
+					{
+						set('batcher_1_tap_1_src', 		'res/tap_vert_close.gif');
+						set('batcher_1_tube_1_src',		'res/tube_1010.gif');
+						set('batcher_1_tube_2_src',		'res/tube_1010.gif');
+						set('batcher_1_tube_3_src',		'res/tube_1010.gif');
+						set('batcher_1_tube_4_src',		'res/tube_1100.gif');
+						set('btn_load_1_background',	'#fff');
+						
+						render();
+						
+						level_mixer_1_after_unloading_1 = parseInt(get('mixer_1_src').slice(12).match(/\d+/));
+						//alert("Опорожнение дозатора 1 закончено!");
+						unloading_2();
+					}
+				}, timer)
+			}
+			myLoop_1();
 		}
-		function myLoop_2()
-		{           
-			setTimeout(function()
-			{    
-				set('batcher_2_src', 'res/batcher_1_'+ (level_max_2 - i_2) +'.gif');
-				set('mixer_1_strain_gauge_text', String(parseInt(get('mixer_1_strain_gauge_text')) + 10));
-				//alert(get('mixer_1_strain_gauge_text'));
-				set('batcher_2_tap_1_src', 		'res/tap_vert_open_ud.gif');
-				set('batcher_2_tube_1_src',		'res/tube_2010.gif');
-				set('batcher_2_tube_2_src',		'res/tube_2010.gif');
-				set('batcher_2_tube_3_src',		'res/tube_2010.gif');
-				set('batcher_2_tube_4_src',		'res/tube_2001.gif');
-				if(i_2 % 2 == 0)
-				{
-					
-					set('mixer_1_src', 'res/mixer_1_'+ (begin_index + i_2/2) +'.gif');
-				}
-					
-				render();
-				i_2++;
-				if ((level_max_2 - i_2) == 9)
-				{ 
-					set('console_batcher_2_text', 'Идет смешивание!');
-					set('btn_load_2_background', '#aaa');
-					set('batcher_2_sensor_max_src', 'res/sensor_red.gif');
-				}
-				if ((level_max_2 - i_2) == 1)
-				{           
-					set('batcher_2_sensor_min_src', 'res/sensor_red.gif');
-				}
-				if (i_2 < level_min_2)
-				{           
-					myLoop_2();
-				}
-				else
-				{
-					set('batcher_2_tap_1_src', 		'res/tap_vert_close.gif');
-					set('batcher_2_tube_1_src',		'res/tube_1010.gif');
-					set('batcher_2_tube_2_src',		'res/tube_1010.gif');
-					set('batcher_2_tube_3_src',		'res/tube_1010.gif');
-					set('batcher_2_tube_4_src',		'res/tube_1001.gif');
-					set('btn_load_2_background',	'#fff');
+//Функция запуска опорожнения дозатора 2(при этом содержимым дозатора 2 загружается в миксер 1, с помощью тензодатчика миксера 1 проводится взвешивание. Показания веса выводятся на индикатор. )	
+		function unloading_2()
+		{
+			let timer = 500;
+			function myLoop_2()
+			{           
+				setTimeout(function()
+				{    
+					set('batcher_2_src', 'res/batcher_1_'+ (level_max_2 - i_2) +'.gif');
+					set('mixer_1_strain_gauge_text', String(parseInt(get('mixer_1_strain_gauge_text')) + Number(Boolean(i_2)) * 10));
+					set('batcher_2_tap_1_src', 		'res/tap_vert_open_ud.gif');
+					set('batcher_2_tube_1_src',		'res/tube_2010.gif');
+					set('batcher_2_tube_2_src',		'res/tube_2010.gif');
+					set('batcher_2_tube_3_src',		'res/tube_2010.gif');
+					set('batcher_2_tube_4_src',		'res/tube_2001.gif');
+					if(i_2 % 2 == 0)
+					{
+						set('mixer_1_src', 'res/mixer_1_'+ (level_mixer_1_after_unloading_1 + i_2/2) +'.gif');
+					}
 					
 					render();
+					i_2++;
+
+					if ((level_max_2 - i_2) == 9)
+					{ 
+						set('batcher_2_sensor_max_src', 'res/sensor_red.gif');
+					}
+					if ((level_max_2 - i_2) == 1)
+					{
+						set('batcher_2_sensor_min_src', 'res/sensor_red.gif');
+					}
+					if (i_2 <= level_min_2)
+					{           
+						myLoop_2();
+					}
+					else
+					{
+						set('batcher_2_tap_1_src', 		'res/tap_vert_close.gif');
+						set('batcher_2_tube_1_src',		'res/tube_1010.gif');
+						set('batcher_2_tube_2_src',		'res/tube_1010.gif');
+						set('batcher_2_tube_3_src',		'res/tube_1010.gif');
+						set('batcher_2_tube_4_src',		'res/tube_1001.gif');
+						set('btn_load_2_background',	'#fff');
+
+						render();
+						n3();
+					}
+				}, timer)
+			}
+			myLoop_2();
+		}
+//Функция смешивания содержимого в миксере 1
+		function n3()
+		{
+			let timer = 500;
+			let mixing = setTimeout(function()
+			{
+				set('mixer_1_stirrer_src', 		'res/stirrer_on.gif');
+				set('console_mixer_1_text', 'Идет смешивание!');
+				set('console_batcher_1_text', 'Идет смешивание!');
+				set('console_batcher_2_text', 'Идет смешивание!');
+				
+				render();
+				n4();
+
+			}, timer)
+		}
+//Функция остановки смешивания содержимого миксера 1
+		function n4()
+		{
+			let timer = 6000;
+			let stop = setTimeout(function()
+			{
+				set('mixer_1_stirrer_src', 		'res/stirrer_off.gif');
+				set('console_mixer_1_text', 'Смешивание закончено!');
+				set('console_batcher_1_text', 'Смешивание закончено!');
+				set('console_batcher_2_text', 'Смешивание закончено!');
+				
+				render();
+				n5();
+				
+			}, timer)
+		}
+//Функция выгрузки миксера 1
+		function n5()
+		{
+			let timer = 4000;
+			let out = setTimeout(function()
+			{
+				set('mixer_1_tap_1_src', 'res/tap_vert_open_ud.gif');
+				set('console_mixer_1_text', 'Идет выгрузка!');
+				set('console_batcher_1_text', 'Идет выгрузка!');
+				set('console_batcher_2_text', 'Идет выгрузка!');
+
+				let i_3 = 0;
+				let mixer_1_curr_level = parseInt(get('mixer_1_src').slice(12).match(/\d+/));
+				function Unloading()
+				{
+					let timer = 500;
 					
-					let mixing = setTimeout(function()
+					setTimeout(function()
 					{
-						set('mixer_1_stirrer_src', 		'res/stirrer_on.gif');
-						set('console_mixer_1_text', 'Идет смешивание!');
-						set('console_batcher_1_text', 'Идет смешивание!');
-						set('console_batcher_2_text', 'Идет смешивание!');
 						render();
-						
-					}, 2000)
-					let stop = setTimeout(function()
-					{
-						set('mixer_1_stirrer_src', 		'res/stirrer_off.gif');
-						set('console_mixer_1_text', 'Смешивание закончено!');
-						set('console_batcher_1_text', 'Смешивание закончено!');
-						set('console_batcher_2_text', 'Смешивание закончено!');
-						set('mixer_1_tap_1_src', 		'res/tap_vert_open_ud.gif');
-						render();
-						
-					}, 8000)
-					let out = setTimeout(function()
-					{
-						set('mixer_1_tap_1_src', 		'res/tap_vert_open_ud.gif');
-						set('console_mixer_1_text', 'Идет выгрузка!');
-						set('console_batcher_1_text', 'Идет выгрузка!');
-						set('console_batcher_2_text', 'Идет выгрузка!');
-						
-						let i_3 = 1;
-						let mixer_1_curr_level = parseInt(get('mixer_1_src').slice(12).match(/\d+/));
-						//set('mixer_1_sensor_min_src', 'res/sensor_green.gif');
-						function Unloading()
+						i_3++;
+
+						if (mixer_1_curr_level >= i_3)
 						{
 							set('mixer_1_src', 'res/mixer_1_'+ (mixer_1_curr_level - i_3) +'.gif');
-							setTimeout(function()
-							{    
-								render();
-								i_3++;                    
-								if ((mixer_1_curr_level + i_3) <= 10)
-								{           
-									Unloading();
-								}
-								else
-								{
-									set('mixer_1_sensor_min_src', 	'res/sensor_red.gif');
-									set('mixer_1_strain_gauge_text', '0');
-									set('mixer_1_tap_1_src', 		'res/tap_vert_close.gif');
-									render();
-								}
-							}, 300)
+							Unloading();
 						}
-						Unloading();
-						
-						render();
-						
-					}, 12000)
-					let finish = setTimeout(function()
-					{
-						set('console_mixer_1_text', 'Выгрузка окончена!');
-						set('console_batcher_1_text', 'Выгрузка окончена!');
-						set('console_batcher_2_text', 'Выгрузка окончена!');
-						set('btn_on_background', 		'#fff');
-						set('btn_run_background', 		'#fff');
-						set('btn_off_background', 		'#fff');
-						set('btn_load_1_background',	'#fff');
-						set('btn_load_2_background', 	'#fff');
-						set('btn_sanit_background', 	'#fff');
-						
-						render();
-						//clearTimeout();
-						
-					}, 15000)
-					
+						else
+						{
+							set('mixer_1_sensor_min_src', 	'res/sensor_red.gif');
+							set('console_mixer_1_text', 'Выгрузка окончена!');
+							set('console_batcher_1_text', 'Выгрузка окончена!');
+							set('console_batcher_2_text', 'Выгрузка окончена!');
+							set('mixer_1_strain_gauge_text', '0');
+							set('mixer_1_tap_1_src', 		'res/tap_vert_close.gif');
+							set('btn_on_background', 		'#fff');
+							set('btn_run_background', 		'#fff');
+							set('btn_off_background', 		'#fff');
+							set('btn_load_1_background',	'#fff');
+							set('btn_load_2_background', 	'#fff');
+							set('btn_sanit_background', 	'#fff');
+							
+							render();
+						}
+					}, timer)
 				}
-			}, 500)
+				
+				Unloading();
+				//render();
+				
+			}, timer)
 		}
-		myLoop_1();
 	}
 	else
 	{
 		alert("Сначала нужно выбрать рецепт в меню слева!");
 	}
-};
+}
 
 //Обработчик нажатия на кнопку загрузки дозатора 1 (левая кнопка "load")	
 load_1.onclick = function()
@@ -480,7 +526,7 @@ sanit.onclick = function()
 	{
 		set('btn_on_background', 		'#fff');
 		set('btn_run_background', 		'#fff');
-		set('btn_off_background', 		'#fff');
+		set('btn_off_background', 		'#f00');
 		set('btn_load_1_background',	'#fff');
 		set('btn_load_2_background', 	'#fff');
 		set('btn_sanit_background', 	'#fff');
@@ -517,7 +563,7 @@ sanit.onclick = function()
 	}
 	else
 	{
-		set('console_mixer_1_text', 	'Нужно сначала нажать кнопку "on"!');
+		alert('Нужно сначала нажать кнопку "on"!');
 	}
 	render();
 };
