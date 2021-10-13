@@ -24,9 +24,9 @@
 				<label for="menu1">&#9660;</label>
 				<ul>
 					<li><a href="#"> - Включить систему("on")</a></li>
-					<li><a href="#"> - Загрузить дозатор 1("load")</a></li>
-					<li><a href="#"> - Загрузить дозатор 2("load")</a></li>
-					<li><a href="#"> - Выбрать % присадки в меню ниже</a></li>
+					<li><a href="#"> - Загрузить присадку("load 1")</a></li>
+					<li><a href="#"> - Загрузить основу("load 2")</a></li>
+					<li><a href="#"> - Выбрать % присадки</a></li>
 					<li><a href="#"> - Запустить процесс("run")</a></li>
 				</ul>
 			</li>
@@ -57,13 +57,13 @@
 			<button id='run' style='top:-50px; left:170px;'>run</button>
 			<button id='off' style='top:-50px; right:65px;'>off</button>
 			
-			<button id='load_1' style='top:48px; left:16px;'>load</button>
-			<button id='load_2' style='top:22px; right:0px;'>load</button>
+			<button id='load_1' style='top:48px; left:16px;'>load 1</button>
+			<button id='load_2' style='top:22px; right:0px;'>load 2</button>
 			
-			<button id='sanit' style='top:264px; right:55px;'>sanit</button>
+			<button id='sanit' style='top:264px; right:55px;' title='Режим санитарной обработки нужен для очистки всей системы проточной водой от остатков ингредиентов.'>sanit</button>
 <!--Mixer-->
 			<marquee  style='top:142px; left: 140px;'><p id='console_mixer_1'></p></marquee>
-			<p id='mixer_1_strain_gauge' style='position:absolute;border:1px solid #000;border-radius:4px;width:100px;top:162px;left:140px;text-align:center;'></p>
+			<p id='mixer_1_strain_gauge' class='strain_gauge' style='top:162px;left:140px;'></p>
 			<img id='mixer_1' class='mixer' style='top:195px;left:140px;' alt=''>
 			<img id='mixer_1_stirrer' class='stirrer' style='top:195px;left:140px;'	alt=''>
 			<img id='mixer_1_tap_1' class='tap' style='top:295px;left:180px;' alt=''>
