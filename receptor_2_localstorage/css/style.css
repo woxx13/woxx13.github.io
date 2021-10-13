@@ -78,6 +78,14 @@ marquee
 	height:				100px;
 	z-index:			400;
 }
+.strain_gauge
+{
+	position:			absolute;
+	border:				1px solid #000;
+	border-radius:		4px;
+	text-align:			center;
+	width:				100px;
+}
 /* Визуализация системы. Конец */
 .block_0 a:link
 {
