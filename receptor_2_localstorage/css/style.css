@@ -14,8 +14,9 @@ button
 	position:			absolute;
 	font-weight:		800;
 	text-transform:		uppercase;
+	width:				75px;
 }
-#on,#run,#off,#load_1,#load_2,#sanit
+#on,#run,#off,#load_1,#load_2,#sanit, a
 {
 	cursor:				pointer;
 }
