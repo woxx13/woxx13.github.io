@@ -11,40 +11,44 @@
 	<link rel='stylesheet' 				href='css/reset.css'>
 	<link rel='stylesheet' 				href='css/style.css'>
 	<link rel='shortcut icon' 			href='favicon.ico'>
+	<script src='js/init.js'></script>
 </head>
 <body>
 <!--Multilevel menu extending from the edge of the screen when you click on the logo-->
 	<nav>
 		<input type="checkbox" id="showmenu"/>
-		<label for="showmenu" class="showmenu"><img style='left: 100px;' src='res/logo.png' title='меню' alt=''></label>
+		<label for="showmenu" class="showmenu"><img id='menu' style='left: 100px;' src='res/logo.png' title='' alt=''></label>
 		<ul>
+			<li><a id='ru' href="#">Выбрать русский</a></li>
+			<li><a id='en' href="#">Choose language</a></li>
+			<li><a id='ua' href="#">Обрати мову</a></li>
 			<li>
-				<a href="index.html">Как пользоваться:</a>
-				<input type="checkbox" id="menu1">
-				<label for="menu1">&#9660;</label>
-				<ul>
-					<li><a href="#"> - Включить систему("on")</a></li>
-					<li><a href="#"> - Загрузить присадку("load 1")</a></li>
-					<li><a href="#"> - Загрузить основу("load 2")</a></li>
-					<li><a href="#"> - Выбрать % присадки</a></li>
-					<li><a href="#"> - Запустить процесс("run")</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="index.html">Каков % присадки?</a>
+				<a id='how_use' href="#"></a>
 				<input type="checkbox" id="menu2">
 				<label for="menu2">&#9660;</label>
 				<ul>
-					<li><a id='recipe_1' href="#" 	onclick = 'choose_recipe(this.id)'>1%</a></li>
-					<li><a id='recipe_2' href="#" 	onclick = 'choose_recipe(this.id)'>2%</a></li>
-					<li><a id='recipe_3' href="#" 	onclick = 'choose_recipe(this.id)'>3%</a></li>
-					<li><a id='recipe_4' href="#" 	onclick = 'choose_recipe(this.id)'>4%</a></li>
-					<li><a id='recipe_5' href="#" 	onclick = 'choose_recipe(this.id)'>5%</a></li>
-					<li><a id='recipe_6' href="#" 	onclick = 'choose_recipe(this.id)'>6%</a></li>
-					<li><a id='recipe_7' href="#" 	onclick = 'choose_recipe(this.id)'>7%</a></li>
-					<li><a id='recipe_8' href="#" 	onclick = 'choose_recipe(this.id)'>8%</a></li>
-					<li><a id='recipe_9' href="#" 	onclick = 'choose_recipe(this.id)'>9%</a></li>
-					<li><a id='recipe_10' href="#" 	onclick = 'choose_recipe(this.id)'>10%</a></li>
+			<li><a id='how_use_1' href="#"></a></li>
+			<li><a id='how_use_2' href="#"></a></li>
+			<li><a id='how_use_3' href="#"></a></li>
+			<li><a id='how_use_4' href="#"></a></li>
+			<li><a id='how_use_5' href="#"></a></li>
+				</ul>
+			</li>
+			<li>
+				<a id='how_much_add' href="#"></a>
+				<input type="checkbox" id="menu3">
+				<label for="menu3">&#9660;</label>
+				<ul>
+					<li><a id='recipe_1'  >1%</a></li>
+					<li><a id='recipe_2'  >2%</a></li>
+					<li><a id='recipe_3'  >3%</a></li>
+					<li><a id='recipe_4'  >4%</a></li>
+					<li><a id='recipe_5'  >5%</a></li>
+					<li><a id='recipe_6'  >6%</a></li>
+					<li><a id='recipe_7'  >7%</a></li>
+					<li><a id='recipe_8'  >8%</a></li>
+					<li><a id='recipe_9'  >9%</a></li>
+					<li><a id='recipe_10' >10%</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -53,14 +57,25 @@
 	<section>
 		<div  style='position: absolute; margin: 160px auto auto 48%; width: 380px; transform: translate(-50%, 0);'>
 <!--Visualisation-->
-			<button id='on' style='top:-50px; left:65px;'>on</button>
-			<button id='run' style='top:-50px; left:170px;'>run</button>
-			<button id='off' style='top:-50px; right:65px;'>off</button>
-			
-			<button id='load_1' style='top:48px; left:16px;'>load 1</button>
-			<button id='load_2' style='top:22px; right:0px;'>load 2</button>
-			
-			<button id='sanit' style='top:264px; right:55px;' title='Режим санитарной обработки нужен для очистки всей системы проточной водой от остатков ингредиентов.'>sanit</button>
+				<button id='on' style='top:-50px; left:65px;'>
+					<script>into(data.on[get('language')])</script>
+				</button>
+				<button id='run' style='top:-50px; left:152px;'>
+					<script>into(data.run[get('language')])</script>
+				</button>
+				<button id='off' style='top:-50px; right:65px;'>
+					<script>into(data.off[get('language')])</script>
+				</button>
+				<button id='load_1' style='top:50px; left:14px;'>
+					<script>into(data.load_1[get('language')])</script>
+				</button>
+				<button id='load_2' style='top:22px; right:0px;'>
+					<script>into(data.load_2[get('language')])</script>
+				</button>
+				
+				<button id='sanit' style='top:264px; right:60px;' title=''>
+					<script>into(data.sanit[get('language')])</script>
+				</button>
 <!--Mixer-->
 			<marquee  style='top:142px; left: 140px;'><p id='console_mixer_1'></p></marquee>
 			<p id='mixer_1_strain_gauge' class='strain_gauge' style='top:162px;left:140px;'></p>
@@ -96,9 +111,7 @@
 	<section>
 		<div style='position: absolute; text-align: center; bottom: 5px; z-index: 1900; width: 96%;'>
 			<div  style='width: 100%; display: inline-block;'>
-				<img style='margin: 0;' src='res/niotech.png' title='
-__All rights reserved__&copy; 2021_
-Write to me: woxx13@gmail.com' />
+				<img id='niotech' style='margin: 0;' src='res/niotech.png' title='' />
 			</div>
 		</div>
 	</section>
