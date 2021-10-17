@@ -1,37 +1,11 @@
 'use strict;'
 
-localStorage.clear();
-//Запись в базу
-function set(key,value)
-{
-	localStorage.setItem(key, value);		
-}
-//Извлечение из базы
-function get(key)
-{
-	return localStorage.getItem(key);
-}
-//записать в базу id выбраного в стартовом меню рецепта. Старое значение при этом затирается.
-function set_recipe(recipe_id)
-{
-	let id = recipe_id.toString();
-	localStorage.setItem('recipe', id.slice(7));
-}
-//Извлечь из базы выбраный рецепт. Если не выбран ни один, отключить кнопку "run".
-function get_recipe()
-{
-	if (get('recipe') !== null)
-	{
-		return get('recipe');
-	}
-	else
-	{
-		set('btn_run_background', '#fff');
-	}
-}
 /**
 *     Объявление переменных объектов интерфейса и инициализация их значениями по умолчанию, т.е. когда система обесточена
 */
+//Язык по-умолчанию. 0 - русский, 1 - английский, 2 - украинский. Может быть переопределен нажатием соответствующей надписи в меню приложения. Если язык уже был выбран пользователем оставляем его значение, если же нет, ставим по-умолчанию русский. Массив, реализующий мультиязычность приложения объявлен в файле init.js
+set('language', (isset('language') ? get('language') : '0'));
+
 //цвет фона кнопки подачи напряжения на систему
 let btn_on_background 		=	set('btn_on_background', '#fff');
 //цвет фона кнопки пуска системы
@@ -98,22 +72,83 @@ let batcher_2_tube_4_src 		= 	set('batcher_2_tube_4_src','res/tube_1001.gif');
 //Инициализация
 window.onload = function init()
 {
-//Показываем меню
-	document.querySelector(".showmenu").click();
 //Прорисовка элементов системы при загрузке страницы
 	render();
+//Показываем меню
+	document.querySelector(".showmenu").click();
+
 //Прячем меню через 2 секунды
 	let hide_menu = setTimeout(function()
 	{
 		document.querySelector(".showmenu").click();
+		alert(data.text_begin[get('language')]);
 	}, 2000)
-};
+	
+	document.getElementById('menu').title 		= data.menu[get("language")];
+	document.getElementById('how_use').innerHTML= data.how_use[get('language')];
+/*Вместо записи:
+document.getElementById('how_use_1').innerHTML= data.how_use_1[get('language')];
+document.getElementById('how_use_2').innerHTML= data.how_use_2[get('language')];
+document.getElementById('how_use_3').innerHTML= data.how_use_3[get('language')];
+document.getElementById('how_use_4').innerHTML= data.how_use_4[get('language')];
+document.getElementById('how_use_5').innerHTML= data.how_use_5[get('language')];
+используем for. Работает, только с доступом к destination через кв. скобки*/
+	for(let i=1; i<=5; i++)
+	{
+		let destination = 'how_use_'+i;
+		document.getElementById(destination).innerHTML= data[destination][get('language')];
+	}
+	document.getElementById('sanit').title 		= data.sanit_title[get("language")];
+	document.getElementById('niotech').title 	= data.niotech[get("language")];
+	document.getElementById('how_much_add').innerHTML= data.how_much_add[get('language')];
 
-alert("Представьте, что Вам нужно смешать два ингредиента - основу и присадку. Причем, основы берется всегда 100 массовых частей, а присадки  от 1 до 10 массовых частей (1%-10%), в зависимости от выбранного рецепта. Данное приложение эмулирует работу такой системы. Для начала работы воспользуйтесь меню(значок шестеренки слева-вверху).");
+};
 
 /**
 *     Обработчики взаимодействия с видимыми элементами интерфейса(кнопками, пунктами меню и т.д.) 
 */
+//Выбор языка в меню
+ru.onclick = function()
+{
+	set('language', '0');
+	location.reload();
+};
+en.onclick = function()
+{
+	set('language', '1');
+	location.reload();
+};
+ua.onclick = function()
+{
+	set('language', '2');
+	location.reload();
+};
+
+// обработчик выбора рецепта в меню
+recipe_1.onclick =
+recipe_2.onclick =
+recipe_3.onclick =
+recipe_4.onclick =
+recipe_5.onclick =
+recipe_6.onclick =
+recipe_7.onclick =
+recipe_8.onclick =
+recipe_9.onclick =
+recipe_10.onclick = function()
+{
+	if(get('console_mixer_1_text') == 'Готов к работе!' && get('console_batcher_1_text') == 'Готов к работе!' && get('console_batcher_2_text') == 'Готов к работе!')
+	{
+		set_recipe(this.id);
+		set('btn_run_background', 		'#0f0');
+		
+		render();
+	}
+	else
+	{
+		alert('Сначала нужно загрузить все дозаторы ингредиентами!');
+	}
+}
+
 //Обработчик нажатия на кнопку "on"	
 on.onclick = function()
 {
@@ -131,21 +166,23 @@ on.onclick = function()
 	set('mixer_1_tap_1_src', 		'res/tap_vert_close.gif');
 	set('mixer_1_stirrer_src', 		'res/stirrer_off.gif');
 	set('mixer_1_strain_gauge_text','0');
-		
-	set('console_batcher_1_text', 	'Добавьте ингредиент!');
+	
+	
+//Из-за того, что после дозирования присадки некоторое ее количество может остаться в дозаторе, данные для некоторых элементов дозатора с присадкой берутся из локального хранилища, а не назначаются по-умолчанию
+	set('console_batcher_1_text', 	(parseInt(get('batcher_1_src').slice(14).match(/\d+/)) ==10) ? 'Готов к работе!' : 'Добавьте ингредиент!');
 	set('batcher_1_src', 			get('batcher_1_src'));
-	set('batcher_1_sensor_min_src', (get('batcher_1_sensor_min_src') == 'res/sensor_blink.gif') ? 'res/sensor_red.gif' : get('batcher_1_sensor_min_src'));
-	set('batcher_1_sensor_max_src', 'res/sensor_red.gif');
+	set('batcher_1_sensor_min_src', (parseInt(get('batcher_1_src').slice(14).match(/\d+/)) >= 1) ? 'res/sensor_green.gif' : 'res/sensor_red.gif');
+	set('batcher_1_sensor_max_src', (parseInt(get('batcher_1_src').slice(14).match(/\d+/)) >= 9) ? 'res/sensor_green.gif' : 'res/sensor_red.gif');
 	set('batcher_1_tap_1_src', 		'res/tap_vert_close.gif');
 	set('batcher_1_tube_1_src',		'res/tube_1010.gif');
 	set('batcher_1_tube_2_src',		'res/tube_1010.gif');
 	set('batcher_1_tube_3_src',		'res/tube_1010.gif');
 	set('batcher_1_tube_4_src',		'res/tube_1100.gif');
 		
-	set('console_batcher_2_text', 	'Добавьте ингредиент!');
-	set('batcher_2_src', 			'res/batcher_1_0.gif');
-	set('batcher_2_sensor_min_src', 'res/sensor_red.gif');
-	set('batcher_2_sensor_max_src', 'res/sensor_red.gif');
+	set('console_batcher_2_text', 	(parseInt(get('batcher_2_src').slice(14).match(/\d+/)) ==10) ? 'Готов к работе!' : 'Добавьте ингредиент!');
+	set('batcher_2_src', 			get('batcher_2_src'));
+	set('batcher_2_sensor_min_src', (parseInt(get('batcher_2_src').slice(14).match(/\d+/)) >= 1) ? 'res/sensor_green.gif' : 'res/sensor_red.gif');
+	set('batcher_2_sensor_max_src', (parseInt(get('batcher_2_src').slice(14).match(/\d+/)) >= 9) ? 'res/sensor_green.gif' : 'res/sensor_red.gif');
 	set('batcher_2_tap_1_src', 		'res/tap_vert_close.gif');
 	set('batcher_2_tube_1_src',		'res/tube_1010.gif');
 	set('batcher_2_tube_2_src',		'res/tube_1010.gif');
@@ -158,6 +195,7 @@ on.onclick = function()
 //Обработчик нажатия на кнопку "off"	
 off.onclick = function()
 {
+//Останавливаем все запущеные таймауты(setTimeout)
 	var killId = setTimeout(function()
 	{
 		for (var i = killId; i > 0; i--) clearInterval(i)
@@ -178,7 +216,7 @@ off.onclick = function()
 	set('mixer_1_strain_gauge_text','0');
 		
 	set('console_batcher_1_text', 	'Система обесточена!');
-	set('batcher_1_src', 			'res/batcher_1_0.gif');
+	set('batcher_1_src', 			get('batcher_1_src'));
 	set('batcher_1_sensor_min_src', 'res/sensor_blink.gif');
 	set('batcher_1_sensor_max_src', 'res/sensor_blink.gif');
 	set('batcher_1_tap_1_src', 		'res/tap_vert_close.gif');
@@ -188,7 +226,7 @@ off.onclick = function()
 	set('batcher_1_tube_4_src',		'res/tube_1100.gif');
 		
 	set('console_batcher_2_text', 	'Система обесточена!');
-	set('batcher_2_src', 			'res/batcher_1_0.gif');
+	set('batcher_2_src', 			get('batcher_2_src'));
 	set('batcher_2_sensor_min_src', 'res/sensor_blink.gif');
 	set('batcher_2_sensor_max_src', 'res/sensor_blink.gif');
 	set('batcher_2_tap_1_src', 		'res/tap_vert_close.gif');
@@ -334,17 +372,17 @@ run.onclick = function()
 						set('btn_load_2_background',	'#fff');
 
 						render();
-						n3();
+						mixing();
 					}
 				}, timer)
 			}
 			myLoop_2();
 		}
 //Функция смешивания содержимого в миксере 1
-		function n3()
+		function mixing()
 		{
 			let timer = 500;
-			let mixing = setTimeout(function()
+			let mix = setTimeout(function()
 			{
 				set('mixer_1_stirrer_src', 		'res/stirrer_on.gif');
 				set('console_mixer_1_text', 'Идет смешивание!');
@@ -352,12 +390,12 @@ run.onclick = function()
 				set('console_batcher_2_text', 'Идет смешивание!');
 				
 				render();
-				n4();
+				mixing_stop();
 
 			}, timer)
 		}
 //Функция остановки смешивания содержимого миксера 1
-		function n4()
+		function mixing_stop()
 		{
 			let timer = 6000;
 			let stop = setTimeout(function()
@@ -368,12 +406,12 @@ run.onclick = function()
 				set('console_batcher_2_text', 'Смешивание закончено!');
 				
 				render();
-				n5();
+				unloading_mixer_1();
 				
 			}, timer)
 		}
 //Функция выгрузки миксера 1
-		function n5()
+		function unloading_mixer_1()
 		{
 			let timer = 4000;
 			let out = setTimeout(function()
@@ -413,6 +451,7 @@ run.onclick = function()
 							set('btn_load_1_background',	'#fff');
 							set('btn_load_2_background', 	'#fff');
 							set('btn_sanit_background', 	'#fff');
+							localStorage.removeItem('recipe');
 							
 							render();
 						}
@@ -420,7 +459,6 @@ run.onclick = function()
 				}
 				
 				Unloading();
-				//render();
 				
 			}, timer)
 		}
@@ -498,6 +536,7 @@ load_2.onclick = function()
 					set('batcher_2_sensor_max_src', 'res/sensor_green.gif');
 					set('btn_load_2_background', '#fff');
 					set('console_batcher_2_text', 	'Готов к работе!');
+					
 					render();
 				}
 			}, 300)
@@ -568,23 +607,10 @@ sanit.onclick = function()
 	render();
 };
 
-function choose_recipe(recipe_id)
-{
-	if(get('console_mixer_1_text') == 'Готов к работе!' && get('console_batcher_1_text') == 'Готов к работе!' && get('console_batcher_2_text') == 'Готов к работе!')
-	{
-		set_recipe(recipe_id);
-		set('btn_run_background', 		'#0f0');
-		
-		render();
-	}
-	else
-	{
-		alert('Сначала нужно загрузить все дозаторы ингредиентами!');
-	}
-};
 //Функция отрисовки интерфейса обновленными значениями.
 function render()
 {
+	
 	document.getElementById('on').style.background 		= get('btn_on_background');
 	document.getElementById('run').style.background 	= get('btn_run_background');
 	document.getElementById('off').style.background 	= get('btn_off_background');
