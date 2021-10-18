@@ -1,0 +1,109 @@
+<!doctype html>
+<html  id='begin'>
+<head>
+	<meta charset='utf-8'>
+	<title>receptor_2</title>
+	<meta name='viewport' 				content='width=device-width, initial-scale=1'>
+	<meta http-equiv='x-ua-compatible' 	content='ie=edge'>
+	<meta name='author' 				content='Kuzmenko Vadim aka woxx'>
+	<meta name='description' 			content=''>
+	<meta name='keywords' 				content=''>
+	<link rel='stylesheet' 				href='css/reset.css'>
+	<link rel='stylesheet' 				href='css/style.css'>
+	<link rel='shortcut icon' 			href='favicon.ico'>
+	<script src='js/init.js'></script>
+</head>
+<body>
+<!--Multilevel menu extending from the edge of the screen when you click on the logo-->
+	<nav>
+		<input type="checkbox" id="showmenu"/>
+		<label for="showmenu" class="showmenu"><img id='menu' style='left: 100px;' src='res/logo.png' title='' alt=''></label>
+		<ul>
+<!-- What languages will be available in the application -->
+			<li><a id='ru' href="#">Выбрать русский</a></li>
+			<li><a id='en' href="#">Choose language</a></li>
+			<li><a id='ua' href="#">Обрати мову</a></li>
+			<li>
+				<a id='how_use' href="#"></a>
+				<input type="checkbox" id="menu2">
+				<label for="menu2">&#9660;</label>
+				<ul>
+			<li><a id='how_use_1' href="#"></a></li>
+			<li><a id='how_use_2' href="#"></a></li>
+			<li><a id='how_use_3' href="#"></a></li>
+			<li><a id='how_use_4' href="#"></a></li>
+			<li><a id='how_use_5' href="#"></a></li>
+				</ul>
+			</li>
+			<li>
+				<a id='how_much_add' href="#"></a>
+				<input type="checkbox" id="menu3">
+				<label for="menu3">&#9660;</label>
+				<ul>
+					<li><a id='recipe_1'>1%</a></li>
+					<li><a id='recipe_2'>2%</a></li>
+					<li><a id='recipe_3'>3%</a></li>
+					<li><a id='recipe_4'>4%</a></li>
+					<li><a id='recipe_5'>5%</a></li>
+					<li><a id='recipe_6'>6%</a></li>
+					<li><a id='recipe_7'>7%</a></li>
+					<li><a id='recipe_8'>8%</a></li>
+					<li><a id='recipe_9'>9%</a></li>
+					<li><a id='recipe_10'>10%</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+<!--/Multilevel menu extending from the edge of the screen when you click on the logo-->
+	<section>
+		<div  style='position: absolute; margin: 160px auto auto 48%; width: 380px; transform: translate(-50%, 0);'>
+<!--Visualisation-->
+				<button id='on' 	style='top:-50px; left:65px;'></button>
+				<button id='run' 	style='top:-50px; left:152px;'></button>
+				<button id='off' 	style='top:-50px; right:65px;'></button>
+				<button id='load_1' style='top:50px; left:15px;'></button>
+				<button id='load_2' style='top:22px; right:0px;'></button>
+				<button id='sanit' 	style='top:264px; right:60px;' title=''></button>
+<!--Mixer-->
+			<marquee  style='top:142px; left: 140px;'><p id='console_mixer_1'></p></marquee>
+			<p id='mixer_1_strain_gauge' class='strain_gauge' style='top:162px;left:140px;'></p>
+			<img id='mixer_1' class='mixer' style='top:195px;left:140px;' alt=''>
+			<img id='mixer_1_stirrer' class='stirrer' style='top:195px;left:140px;'	alt=''>
+			<img id='mixer_1_tap_1' class='tap' style='top:295px;left:180px;' alt=''>
+			<img id='mixer_1_sensor_max' class='sensor'	style='top:212px;left:160px;' alt=''>
+			<img id='mixer_1_sensor_min' class='sensor'	style='top:285px;left:187px;' alt=''>
+<!--Batcher №1-->
+			<marquee  style='top:-10px; left: 80px;'><p id='console_batcher_1'></p></marquee>
+			<img id='batcher_1' class='tank_small' style='top:50px;left:95px;' alt='batcher'>
+			<img id='batcher_1_sensor_max' class='sensor' style='top:63px;left:112px;' alt='sensor_max'>
+			<img id='batcher_1_sensor_min' class='sensor' style='top:110px;left:127px;' alt='sensor_min'>
+			<img id='batcher_1_tap_1' class='tap' style='top:120px;left:120px;'	alt='tap'>
+			<img id='batcher_1_tube_1' class='tube' style='top:140px;left:120px;' alt='tube'>
+			<img id='batcher_1_tube_2' class='tube' style='top:160px;left:120px;' alt='tube'>
+			<img id='batcher_1_tube_3' class='tube' style='top:180px;left:120px;' alt='tube'>
+			<img id='batcher_1_tube_4' class='tube' style='top:200px;left:120px;' alt='tube'>
+<!--Batcher №2-->
+			<marquee  style='top:-10px; left: 200px;'><p id='console_batcher_2'></p></marquee>
+			<img id='batcher_2' class='tank' style='top:20px;left:200px;' alt=''>
+			<img id='batcher_2_sensor_max' class='sensor' style='top:40px;left:220px;' alt=''>
+			<img id='batcher_2_sensor_min' class='sensor' style='top:100px;left:247px;'	alt=''>
+			<img id='batcher_2_tap_1' class='tap' style='top:120px;left:240px;'	alt=''>
+			<img id='batcher_2_tube_1' class='tube' style='top:140px;left:240px;' alt='tube'>
+			<img id='batcher_2_tube_2' class='tube' style='top:160px;left:240px;' alt='tube'>
+			<img id='batcher_2_tube_3' class='tube' style='top:180px;left:240px;' alt='tube'>
+			<img id='batcher_2_tube_4' class='tube' style='top:200px;left:240px;' alt='tube'>
+		</div>
+<!--/Visuallisation-->
+	</section>
+<!--Footer Logo-->	
+	<section>
+		<div style='position: absolute; text-align: center; bottom: 5px; z-index: 1900; width: 96%;'>
+			<div  style='width: 100%; display: inline-block;'>
+				<img id='niotech' style='margin: 0;' src='res/niotech.png' title='' />
+			</div>
+		</div>
+	</section>
+<!--/Footer Logo-->
+	<script src='js/script.js'></script>
+</body>
+</html>
