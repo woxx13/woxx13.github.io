@@ -442,9 +442,9 @@ run.onclick = function()
 						else
 						{
 							set('mixer_1_sensor_min_src', 	'res/sensor_red.gif');
-							set('console_mixer_1_text', data.upload_finished[get('language')]);
-							set('console_batcher_1_text', data.upload_finished[get('language')]);
-							set('console_batcher_2_text', data.upload_finished[get('language')]);
+							set('console_mixer_1_text', data.unload_finished[get('language')]);
+							set('console_batcher_1_text', data.unload_finished[get('language')]);
+							set('console_batcher_2_text', data.unload_finished[get('language')]);
 							set('mixer_1_strain_gauge_text', '0');
 							set('mixer_1_tap_1_src', 		'res/tap_vert_close.gif');
 							set('btn_on_background', 		'#fff');

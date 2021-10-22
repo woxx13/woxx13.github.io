@@ -253,11 +253,11 @@ let data = {
 			'Йде вивантаження!'
 		],
 	
-	'upload_finished':
+	'unload_finished':
 
 		[
 			'Выгрузка окончена!',
-			'Upload finished!',
+			'Unload finished!',
 			'Вивантаження закінчено!'
 		],
 	
